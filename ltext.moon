@@ -17,7 +17,7 @@ slow_write = (text, rate) ->
   text = text and (tostring text)   or ""
   rate = rate and 1/(tonumber rate) or 1/20
   for n=1, text\len!
-    os.sleep rate
+    sleep rate
     io.write text\sub n,n
     io.flush!
 
