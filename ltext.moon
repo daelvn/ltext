@@ -71,12 +71,36 @@ _bullet = (text) -> " * #{text}"
 _quote  = (text) -> " > #{text}"
 _title  = (text) -> "== #{text}"
 
-arrow  = (text, color="blue")    -> if ansicolors then "%{#{color}}#{_arrow  text}%{reset}" else _arrow  text
-dart   = (text, color="cyan")    -> if ansicolors then "%{#{color}}#{_dart   text}%{reset}" else _dart   text
-pin    = (text, color="green")   -> if ansicolors then "%{#{color}}#{_pin    text}%{reset}" else _pin    text
-bullet = (text, color="green")   -> if ansicolors then "%{#{color}}#{_bullet text}%{reset}" else _bullet text
-quote  = (text, color="magenta") -> if ansicolors then "%{#{color}}#{_quote  text}%{reset}" else _quote  text
-title  = (text, color="magenta") -> if ansicolors then "%{#{color}}#{_title  text}%{reset}" else _title  text
+arrow  = (text, full=true, color="blue")    ->
+  if ansicolors
+    ansicolors "%{#{color}}#{if not full then "%{reset}"}#{_arrow text}"
+  else
+    _arrow text
+dart   = (text, color="cyan")    ->
+  if ansicolors
+    ansicolors "%{#{color}}#{if not full then "%{reset}"}#{_dart text}"
+  else
+    _dart text
+pin    = (text, color="green")   ->
+  if ansicolors
+    ansicolors "%{#{color}}#{if not full then "%{reset}"}#{_pin text}"
+  else
+    _pin text
+bullet = (text, color="green")   ->
+  if ansicolors
+    ansicolors "%{#{color}}#{if not full then "%{reset}"}#{_bullet text}"
+  else
+    _bullet text
+quote  = (text, color="magenta") ->
+  if ansicolors
+    ansicolors "%{#{color}}#{if not full then "%{reset}"}#{_quote text}"
+  else
+    _quote text
+title  = (text, color="magenta") ->
+  if ansicolors
+    ansicolors "%{#{color}}#{if not full then "%{reset}"}#{_title text}"
+  else
+    _title text
 
 printf = (text, ...) -> print string.format text, ...
 
@@ -85,8 +109,8 @@ if ansicolors
   set_foreground = (color) -> ansicolors.noReset "%{#{color}}"
   set_background = (color) -> ansicolors.noReset "%{#{color}bg}"
 
-  printc  = (text) -> print ansicolors text
-  printcf = (text) -> print ansicolors string.format text, ...
+  printc  = (text)      -> print ansicolors text
+  printcf = (text, ...) -> print ansicolors string.format text, ...
 
 local printi
 if inspect
@@ -108,4 +132,3 @@ if inspect
 
   :printi
 }
-
