@@ -139,28 +139,82 @@ split = function(text, sep, max, plain)
   return parts
 end
 local _arrow
-_arrow = function(text)
-  return "=> " .. tostring(text)
+_arrow = function(text, full)
+  if full == nil then
+    full = true
+  end
+  return "=> " .. tostring((function()
+    if not full then
+      return "%{reset}"
+    else
+      return ""
+    end
+  end)()) .. tostring(text)
 end
 local _dart
-_dart = function(text)
-  return "-> " .. tostring(text)
+_dart = function(text, full)
+  if full == nil then
+    full = true
+  end
+  return "-> " .. tostring((function()
+    if not full then
+      return "%{reset}"
+    else
+      return ""
+    end
+  end)()) .. tostring(text)
 end
 local _pin
-_pin = function(text)
-  return "-- " .. tostring(text)
+_pin = function(text, full)
+  if full == nil then
+    full = true
+  end
+  return "-- " .. tostring((function()
+    if not full then
+      return "%{reset}"
+    else
+      return ""
+    end
+  end)()) .. tostring(text)
 end
 local _bullet
-_bullet = function(text)
-  return " * " .. tostring(text)
+_bullet = function(text, full)
+  if full == nil then
+    full = true
+  end
+  return " * " .. tostring((function()
+    if not full then
+      return "%{reset}"
+    else
+      return ""
+    end
+  end)()) .. tostring(text)
 end
 local _quote
-_quote = function(text)
-  return " > " .. tostring(text)
+_quote = function(text, full)
+  if full == nil then
+    full = true
+  end
+  return " > " .. tostring((function()
+    if not full then
+      return "%{reset}"
+    else
+      return ""
+    end
+  end)()) .. tostring(text)
 end
 local _title
-_title = function(text)
-  return "== " .. tostring(text)
+_title = function(text, full)
+  if full == nil then
+    full = true
+  end
+  return "== " .. tostring((function()
+    if not full then
+      return "%{reset}"
+    else
+      return ""
+    end
+  end)()) .. tostring(text)
 end
 local arrow
 arrow = function(text, full, color)
@@ -171,13 +225,7 @@ arrow = function(text, full, color)
     color = "blue"
   end
   if ansicolors then
-    return ansicolors("%{" .. tostring(color) .. "}" .. tostring((function()
-      if not full then
-        return "%{reset}"
-      else
-        return ""
-      end
-    end)()) .. tostring(_arrow(text)))
+    return ansicolors("%{" .. tostring(color) .. "}" .. tostring(_arrow(text, full)))
   else
     return _arrow(text)
   end
@@ -191,13 +239,7 @@ dart = function(text, full, color)
     color = "cyan"
   end
   if ansicolors then
-    return ansicolors("%{" .. tostring(color) .. "}" .. tostring((function()
-      if not full then
-        return "%{reset}"
-      else
-        return ""
-      end
-    end)()) .. tostring(_dart(text)))
+    return ansicolors("%{" .. tostring(color) .. "}" .. tostring(_dart(text, full)))
   else
     return _dart(text)
   end
@@ -211,13 +253,7 @@ pin = function(text, full, color)
     color = "green"
   end
   if ansicolors then
-    return ansicolors("%{" .. tostring(color) .. "}" .. tostring((function()
-      if not full then
-        return "%{reset}"
-      else
-        return ""
-      end
-    end)()) .. tostring(_pin(text)))
+    return ansicolors("%{" .. tostring(color) .. "}" .. tostring(_pin(text, full)))
   else
     return _pin(text)
   end
@@ -231,13 +267,7 @@ bullet = function(text, full, color)
     color = "green"
   end
   if ansicolors then
-    return ansicolors("%{" .. tostring(color) .. "}" .. tostring((function()
-      if not full then
-        return "%{reset}"
-      else
-        return ""
-      end
-    end)()) .. tostring(_bullet(text)))
+    return ansicolors("%{" .. tostring(color) .. "}" .. tostring(_bullet(text, full)))
   else
     return _bullet(text)
   end
@@ -251,13 +281,7 @@ quote = function(text, full, color)
     color = "magenta"
   end
   if ansicolors then
-    return ansicolors("%{" .. tostring(color) .. "}" .. tostring((function()
-      if not full then
-        return "%{reset}"
-      else
-        return ""
-      end
-    end)()) .. tostring(_quote(text)))
+    return ansicolors("%{" .. tostring(color) .. "}" .. tostring(_quote(text, full)))
   else
     return _quote(text)
   end
@@ -271,13 +295,7 @@ title = function(text, full, color)
     color = "magenta"
   end
   if ansicolors then
-    return ansicolors("%{" .. tostring(color) .. "}" .. tostring((function()
-      if not full then
-        return "%{reset}"
-      else
-        return ""
-      end
-    end)()) .. tostring(_title(text)))
+    return ansicolors("%{" .. tostring(color) .. "}" .. tostring(_title(text, full)))
   else
     return _title(text)
   end

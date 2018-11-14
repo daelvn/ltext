@@ -49,7 +49,7 @@ trim  = (text) -> trimr triml text if text
 
 split = (text, sep=" ", max, plain) ->
   sep = " " if sep == ""
-  
+
   parts = {}
   if text\len! > 0
     max = max or -1
@@ -64,41 +64,41 @@ split = (text, sep=" ", max, plain) ->
     parts[nf] = text\sub ns
   parts
 
-_arrow  = (text) -> "=> #{text}"
-_dart   = (text) -> "-> #{text}"
-_pin    = (text) -> "-- #{text}"
-_bullet = (text) -> " * #{text}"
-_quote  = (text) -> " > #{text}"
-_title  = (text) -> "== #{text}"
+_arrow  = (text, full=true) -> "=> #{if not full then "%{reset}" else ""}#{text}"
+_dart   = (text, full=true) -> "-> #{if not full then "%{reset}" else ""}#{text}"
+_pin    = (text, full=true) -> "-- #{if not full then "%{reset}" else ""}#{text}"
+_bullet = (text, full=true) -> " * #{if not full then "%{reset}" else ""}#{text}"
+_quote  = (text, full=true) -> " > #{if not full then "%{reset}" else ""}#{text}"
+_title  = (text, full=true) -> "== #{if not full then "%{reset}" else ""}#{text}"
 
 arrow  = (text, full=true, color="blue")    ->
   if ansicolors
-    ansicolors "%{#{color}}#{if not full then "%{reset}" else ""}#{_arrow text}"
+    ansicolors "%{#{color}}#{_arrow text, full}"
   else
     _arrow text
 dart   = (text, full=true, color="cyan")    ->
   if ansicolors
-    ansicolors "%{#{color}}#{if not full then "%{reset}" else ""}#{_dart text}"
+    ansicolors "%{#{color}}#{_dart text, full}"
   else
     _dart text
 pin    = (text, full=true, color="green")   ->
   if ansicolors
-    ansicolors "%{#{color}}#{if not full then "%{reset}" else ""}#{_pin text}"
+    ansicolors "%{#{color}}#{_pin text, full}"
   else
     _pin text
 bullet = (text, full=true, color="green")   ->
   if ansicolors
-    ansicolors "%{#{color}}#{if not full then "%{reset}" else ""}#{_bullet text}"
+    ansicolors "%{#{color}}#{_bullet text, full}"
   else
     _bullet text
 quote  = (text, full=true, color="magenta") ->
   if ansicolors
-    ansicolors "%{#{color}}#{if not full then "%{reset}" else ""}#{_quote text}"
+    ansicolors "%{#{color}}#{_quote text, full}"
   else
     _quote text
 title  = (text, full=true, color="magenta") ->
   if ansicolors
-    ansicolors "%{#{color}}#{if not full then "%{reset}" else ""}#{_title text}"
+    ansicolors "%{#{color}}#{_title text, full}"
   else
     _title text
 
@@ -126,7 +126,7 @@ if inspect
   :split
   :arrow, :dart, :pin, :bullet, :quote, :title
   :printf
-  
+
   :set_foreground, :set_background
   :printc, :printcf
 
