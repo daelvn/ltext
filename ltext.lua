@@ -183,7 +183,10 @@ arrow = function(text, full, color)
   end
 end
 local dart
-dart = function(text, color)
+dart = function(text, full, color)
+  if full == nil then
+    full = true
+  end
   if color == nil then
     color = "cyan"
   end
@@ -200,7 +203,10 @@ dart = function(text, color)
   end
 end
 local pin
-pin = function(text, color)
+pin = function(text, full, color)
+  if full == nil then
+    full = true
+  end
   if color == nil then
     color = "green"
   end
@@ -217,7 +223,10 @@ pin = function(text, color)
   end
 end
 local bullet
-bullet = function(text, color)
+bullet = function(text, full, color)
+  if full == nil then
+    full = true
+  end
   if color == nil then
     color = "green"
   end
@@ -234,7 +243,10 @@ bullet = function(text, color)
   end
 end
 local quote
-quote = function(text, color)
+quote = function(text, full, color)
+  if full == nil then
+    full = true
+  end
   if color == nil then
     color = "magenta"
   end
@@ -251,7 +263,10 @@ quote = function(text, color)
   end
 end
 local title
-title = function(text, color)
+title = function(text, full, color)
+  if full == nil then
+    full = true
+  end
   if color == nil then
     color = "magenta"
   end

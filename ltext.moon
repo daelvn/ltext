@@ -76,27 +76,27 @@ arrow  = (text, full=true, color="blue")    ->
     ansicolors "%{#{color}}#{if not full then "%{reset}" else ""}#{_arrow text}"
   else
     _arrow text
-dart   = (text, color="cyan")    ->
+dart   = (text, full=true, color="cyan")    ->
   if ansicolors
     ansicolors "%{#{color}}#{if not full then "%{reset}" else ""}#{_dart text}"
   else
     _dart text
-pin    = (text, color="green")   ->
+pin    = (text, full=true, color="green")   ->
   if ansicolors
     ansicolors "%{#{color}}#{if not full then "%{reset}" else ""}#{_pin text}"
   else
     _pin text
-bullet = (text, color="green")   ->
+bullet = (text, full=true, color="green")   ->
   if ansicolors
     ansicolors "%{#{color}}#{if not full then "%{reset}" else ""}#{_bullet text}"
   else
     _bullet text
-quote  = (text, color="magenta") ->
+quote  = (text, full=true, color="magenta") ->
   if ansicolors
     ansicolors "%{#{color}}#{if not full then "%{reset}" else ""}#{_quote text}"
   else
     _quote text
-title  = (text, color="magenta") ->
+title  = (text, full=true, color="magenta") ->
   if ansicolors
     ansicolors "%{#{color}}#{if not full then "%{reset}" else ""}#{_title text}"
   else
