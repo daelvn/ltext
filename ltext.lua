@@ -174,6 +174,8 @@ arrow = function(text, full, color)
     return ansicolors("%{" .. tostring(color) .. "}" .. tostring((function()
       if not full then
         return "%{reset}"
+      else
+        return ""
       end
     end)()) .. tostring(_arrow(text)))
   else
@@ -189,6 +191,8 @@ dart = function(text, color)
     return ansicolors("%{" .. tostring(color) .. "}" .. tostring((function()
       if not full then
         return "%{reset}"
+      else
+        return ""
       end
     end)()) .. tostring(_dart(text)))
   else
@@ -204,6 +208,8 @@ pin = function(text, color)
     return ansicolors("%{" .. tostring(color) .. "}" .. tostring((function()
       if not full then
         return "%{reset}"
+      else
+        return ""
       end
     end)()) .. tostring(_pin(text)))
   else
@@ -219,6 +225,8 @@ bullet = function(text, color)
     return ansicolors("%{" .. tostring(color) .. "}" .. tostring((function()
       if not full then
         return "%{reset}"
+      else
+        return ""
       end
     end)()) .. tostring(_bullet(text)))
   else
@@ -234,6 +242,8 @@ quote = function(text, color)
     return ansicolors("%{" .. tostring(color) .. "}" .. tostring((function()
       if not full then
         return "%{reset}"
+      else
+        return ""
       end
     end)()) .. tostring(_quote(text)))
   else
@@ -249,6 +259,8 @@ title = function(text, color)
     return ansicolors("%{" .. tostring(color) .. "}" .. tostring((function()
       if not full then
         return "%{reset}"
+      else
+        return ""
       end
     end)()) .. tostring(_title(text)))
   else

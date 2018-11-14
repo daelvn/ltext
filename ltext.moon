@@ -73,32 +73,32 @@ _title  = (text) -> "== #{text}"
 
 arrow  = (text, full=true, color="blue")    ->
   if ansicolors
-    ansicolors "%{#{color}}#{if not full then "%{reset}"}#{_arrow text}"
+    ansicolors "%{#{color}}#{if not full then "%{reset}" else ""}#{_arrow text}"
   else
     _arrow text
 dart   = (text, color="cyan")    ->
   if ansicolors
-    ansicolors "%{#{color}}#{if not full then "%{reset}"}#{_dart text}"
+    ansicolors "%{#{color}}#{if not full then "%{reset}" else ""}#{_dart text}"
   else
     _dart text
 pin    = (text, color="green")   ->
   if ansicolors
-    ansicolors "%{#{color}}#{if not full then "%{reset}"}#{_pin text}"
+    ansicolors "%{#{color}}#{if not full then "%{reset}" else ""}#{_pin text}"
   else
     _pin text
 bullet = (text, color="green")   ->
   if ansicolors
-    ansicolors "%{#{color}}#{if not full then "%{reset}"}#{_bullet text}"
+    ansicolors "%{#{color}}#{if not full then "%{reset}" else ""}#{_bullet text}"
   else
     _bullet text
 quote  = (text, color="magenta") ->
   if ansicolors
-    ansicolors "%{#{color}}#{if not full then "%{reset}"}#{_quote text}"
+    ansicolors "%{#{color}}#{if not full then "%{reset}" else ""}#{_quote text}"
   else
     _quote text
 title  = (text, color="magenta") ->
   if ansicolors
-    ansicolors "%{#{color}}#{if not full then "%{reset}"}#{_title text}"
+    ansicolors "%{#{color}}#{if not full then "%{reset}" else ""}#{_title text}"
   else
     _title text
 
