@@ -6,7 +6,7 @@ source  = {
 }
 description = {
   summary = "Text util functions for Lua",
-  description = [[
+  detailed = [[
     ltext is a compilation of useful functions from lua-users
     and others to manage strings. It includes functions such
     as trim, split, case-change functions, and decorator
