@@ -9,12 +9,17 @@ if not pcall ->
     inspect    = require "inspect"
   inspect      = false
 
+sleep = (seconds) ->
+  time = os.clock!
+  while os.clock! - time <= seconds do nil
+
 slow_write = (text, rate) ->
   text = text and (tostring text)   or ""
   rate = rate and 1/(tonumber rate) or 1/20
   for n=1, text\len!
     os.sleep rate
     io.write text\sub n,n
+    io.flush!
 
 slow_print = (text, rate) ->
   slow_write text, rate

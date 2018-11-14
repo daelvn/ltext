@@ -9,6 +9,13 @@ if not pcall(function()
 end) then
   inspect = false
 end
+local sleep
+sleep = function(seconds)
+  local time = os.clock()
+  while os.clock() - time <= seconds do
+    local _ = nil
+  end
+end
 local slow_write
 slow_write = function(text, rate)
   text = text and (tostring(text)) or ""
@@ -16,6 +23,7 @@ slow_write = function(text, rate)
   for n = 1, text:len() do
     os.sleep(rate)
     io.write(text:sub(n, n))
+    io.flush()
   end
 end
 local slow_print
