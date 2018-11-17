@@ -9,16 +9,21 @@ if not pcall ->
     inspect    = require "inspect"
   inspect      = false
 
-slow_write = (text, rate) ->
-  text = text and (tostring text)   or ""
-  rate = rate and 1/(tonumber rate) or 1/20
-  for n=1, text\len!
-    os.sleep rate
-    io.write text\sub n,n
-
-slow_print = (text, rate) ->
-  slow_write text, rate
-  print!
+--sleep = (n) ->
+--  time = os.clock!
+--  while (os.clock! - time) <= n do nil
+--
+--slow_write = (text, rate) ->
+--  text = text and (tostring text)   or ""
+--  rate = rate and 1/(tonumber rate) or 1/20
+--  for n=1, text\len!
+--    sleep rate
+--    io.write text\sub n,n
+--    io.flush!
+--
+--slow_print = (text, rate) ->
+--  slow_write text, rate
+--  print!
 
 starts_with = (text, start) -> (text\sub 1, start\len!) == start
 ends_with   = (text, ends)  -> (text\sub -(ends\len!))  == ends
@@ -117,7 +122,7 @@ if inspect
   printi  = (any) -> print inspect any
 
 {
-  :slow_write, :slow_print
+--  :slow_write, :slow_print
   :starts_with, :ends_with
   :first_upper, :first_word_upper, :first_lower, :first_word_lower
   :all_upper, :all_lower, :title_case
