@@ -1,5 +1,5 @@
 package = "ltext"
-version = '1.0.1'
+version = '1.0.1-1'
 source  = {
   url = "git://github.com/daelvn/ltext",
   tag = "v1.0.1"
