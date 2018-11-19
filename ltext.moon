@@ -75,37 +75,43 @@ _pin    = (text, full=true) -> "-- #{if not full then "%{reset}" else ""}#{text}
 _bullet = (text, full=true) -> " * #{if not full then "%{reset}" else ""}#{text}"
 _quote  = (text, full=true) -> " > #{if not full then "%{reset}" else ""}#{text}"
 _title  = (text, full=true) -> "== #{if not full then "%{reset}" else ""}#{text}"
+_error  = (text, full=true) -> "!! #{if not full then "%{reset}" else ""}#{text}"
 
 arrow  = (text, full=true, color="blue")    ->
   if ansicolors
     ansicolors "%{#{color}}#{_arrow text, full}"
   else
-    _arrow text
+    _arrow text, false
 dart   = (text, full=true, color="cyan")    ->
   if ansicolors
     ansicolors "%{#{color}}#{_dart text, full}"
   else
-    _dart text
+    _dart text, false
 pin    = (text, full=true, color="green")   ->
   if ansicolors
     ansicolors "%{#{color}}#{_pin text, full}"
   else
-    _pin text
+    _pin text, false
 bullet = (text, full=true, color="green")   ->
   if ansicolors
     ansicolors "%{#{color}}#{_bullet text, full}"
   else
-    _bullet text
+    _bullet text, false
 quote  = (text, full=true, color="magenta") ->
   if ansicolors
     ansicolors "%{#{color}}#{_quote text, full}"
   else
-    _quote text
+    _quote text, false
 title  = (text, full=true, color="magenta") ->
   if ansicolors
     ansicolors "%{#{color}}#{_title text, full}"
   else
-    _title text
+    _title text, false
+error  = (text, full=true, color="red") ->
+  if ansicolors
+    ansicolors "%{#{color}}#{_error text, full}"
+  else
+    _error text, false
 
 printf = (text, ...) -> print string.format text, ...
 

@@ -9,7 +9,6 @@ if not pcall(function()
 end) then
   inspect = false
 end
-
 local sleep
 sleep = function(seconds)
   local time = os.clock()
@@ -22,7 +21,7 @@ slow_write = function(text, rate)
   text = text and (tostring(text)) or ""
   rate = rate and 1 / (tonumber(rate)) or 1 / 20
   for n = 1, text:len() do
-    os.sleep(rate)
+    sleep(rate)
     io.write(text:sub(n, n))
     io.flush()
   end
@@ -32,7 +31,6 @@ slow_print = function(text, rate)
   slow_write(text, rate)
   return print()
 end
-
 local starts_with
 starts_with = function(text, start)
   return (text:sub(1, start:len())) == start
@@ -226,6 +224,19 @@ _title = function(text, full)
     end
   end)()) .. tostring(text)
 end
+local _error
+_error = function(text, full)
+  if full == nil then
+    full = true
+  end
+  return "!! " .. tostring((function()
+    if not full then
+      return "%{reset}"
+    else
+      return ""
+    end
+  end)()) .. tostring(text)
+end
 local arrow
 arrow = function(text, full, color)
   if full == nil then
@@ -237,7 +248,7 @@ arrow = function(text, full, color)
   if ansicolors then
     return ansicolors("%{" .. tostring(color) .. "}" .. tostring(_arrow(text, full)))
   else
-    return _arrow(text)
+    return _arrow(text, false)
   end
 end
 local dart
@@ -251,7 +262,7 @@ dart = function(text, full, color)
   if ansicolors then
     return ansicolors("%{" .. tostring(color) .. "}" .. tostring(_dart(text, full)))
   else
-    return _dart(text)
+    return _dart(text, false)
   end
 end
 local pin
@@ -265,7 +276,7 @@ pin = function(text, full, color)
   if ansicolors then
     return ansicolors("%{" .. tostring(color) .. "}" .. tostring(_pin(text, full)))
   else
-    return _pin(text)
+    return _pin(text, false)
   end
 end
 local bullet
@@ -279,7 +290,7 @@ bullet = function(text, full, color)
   if ansicolors then
     return ansicolors("%{" .. tostring(color) .. "}" .. tostring(_bullet(text, full)))
   else
-    return _bullet(text)
+    return _bullet(text, false)
   end
 end
 local quote
@@ -293,7 +304,7 @@ quote = function(text, full, color)
   if ansicolors then
     return ansicolors("%{" .. tostring(color) .. "}" .. tostring(_quote(text, full)))
   else
-    return _quote(text)
+    return _quote(text, false)
   end
 end
 local title
@@ -307,7 +318,21 @@ title = function(text, full, color)
   if ansicolors then
     return ansicolors("%{" .. tostring(color) .. "}" .. tostring(_title(text, full)))
   else
-    return _title(text)
+    return _title(text, false)
+  end
+end
+local error
+error = function(text, full, color)
+  if full == nil then
+    full = true
+  end
+  if color == nil then
+    color = "red"
+  end
+  if ansicolors then
+    return ansicolors("%{" .. tostring(color) .. "}" .. tostring(_error(text, full)))
+  else
+    return _error(text, false)
   end
 end
 local printf
