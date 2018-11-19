@@ -9,6 +9,30 @@ if not pcall(function()
 end) then
   inspect = false
 end
+
+local sleep
+sleep = function(seconds)
+  local time = os.clock()
+  while os.clock() - time <= seconds do
+    local _ = nil
+  end
+end
+local slow_write
+slow_write = function(text, rate)
+  text = text and (tostring(text)) or ""
+  rate = rate and 1 / (tonumber(rate)) or 1 / 20
+  for n = 1, text:len() do
+    os.sleep(rate)
+    io.write(text:sub(n, n))
+    io.flush()
+  end
+end
+local slow_print
+slow_print = function(text, rate)
+  slow_write(text, rate)
+  return print()
+end
+
 local starts_with
 starts_with = function(text, start)
   return (text:sub(1, start:len())) == start
@@ -312,6 +336,8 @@ if inspect then
   end
 end
 return {
+  slow_write = slow_write,
+  slow_print = slow_print,
   starts_with = starts_with,
   ends_with = ends_with,
   first_upper = first_upper,
