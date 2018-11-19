@@ -9,6 +9,7 @@ if not pcall(function()
 end) then
   inspect = false
 end
+
 local sleep
 sleep = function(seconds)
   local time = os.clock()
@@ -31,6 +32,7 @@ slow_print = function(text, rate)
   slow_write(text, rate)
   return print()
 end
+
 local starts_with
 starts_with = function(text, start)
   return (text:sub(1, start:len())) == start
