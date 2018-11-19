@@ -1,8 +1,8 @@
 package = "ltext"
-version = '1.0.1-1'
+version = '1.0.2-1'
 source  = {
   url = "git://github.com/daelvn/ltext",
-  tag = "v1.0.1"
+  tag = "v1.0.2"
 }
 description = {
   summary = "Text util functions for Lua",
