@@ -384,6 +384,7 @@ return {
   bullet = bullet,
   quote = quote,
   title = title,
+  error = error,
   printf = printf,
   set_foreground = set_foreground,
   set_background = set_background,

@@ -135,7 +135,7 @@ if inspect
   :url_encode, :url_decode
   :trimr, :triml, :trim
   :split
-  :arrow, :dart, :pin, :bullet, :quote, :title
+  :arrow, :dart, :pin, :bullet, :quote, :title, :error
   :printf
 
   :set_foreground, :set_background
