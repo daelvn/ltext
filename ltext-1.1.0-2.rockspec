@@ -1,5 +1,5 @@
 package = "ltext"
-version = '1.1.0-1'
+version = '1.1.0-2'
 source  = {
   url = "git://github.com/daelvn/ltext",
   tag = "v1.1.0"
@@ -15,7 +15,6 @@ description = {
     on them.
   ]],
   homepage = "https://github.com/daelvn/ltext",
-  license  = "MIT/X11"
 }
 build = {
   type = "builtin",
